@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+/*
+ * Paleta del Manual de Identidad Visual de la Universidad Santo Tomás (seccional Bucaramanga).
+ * Espaciado: Tailwind usa una base de 4px; en el diseño se usan múltiplos de 8px (2, 4, 6, 8...).
+ */
+@theme {
+  --color-azul: #1b4a96; /* Azul institucional */
+  --color-navy: #123165; /* Azul profundo · secciones oscuras */
+  --color-naranja: #f68712;
+  --color-amarillo: #fccb06;
+  --color-rojo: #ed1c2d;
+  --color-cian: #00adef;
+  --color-negro: #231f20;
+  --color-niebla: #f2f5fa; /* fondo claro neutro derivado del azul */
+
+  --radius-card: 1.25rem;
+}
+
+/* Fuentes cargadas con next/font (ver src/app/layout.tsx) */
+@theme inline {
+  --font-sans: var(--font-archivo), "Helvetica Neue", Helvetica, Arial, ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-archivo-narrow), "Helvetica Neue", Helvetica, Arial, ui-sans-serif, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background: #ffffff;
+  color: var(--color-negro);
+  font-family: var(--font-sans);
+}
+
+/* Estados de foco visibles y consistentes */
+:where(a, button, summary, [tabindex]):focus-visible {
+  outline: 3px solid var(--color-amarillo);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* Las secciones con ancla no quedan ocultas bajo el encabezado fijo */
+section[id] {
+  scroll-margin-top: 5rem;
+}
